@@ -70,8 +70,8 @@ namespace StoreApp.Library
                 Name = name;
        }
 
-       public void AddInventory ( int count){
-           Quantity += count;
-       }
+    //    public void AddInventory ( int count){
+    //        Quantity += count;
+    //    }
     }
 }
