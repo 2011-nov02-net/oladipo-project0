@@ -13,6 +13,8 @@ namespace StoreApp.Library
         private string _lastName;
         //customer id
         public string CustomerID { get; }
+        //default store 
+        public int DefaultStore {get; set;}
 
 
         // set names to not allow empty string
@@ -52,6 +54,11 @@ namespace StoreApp.Library
             this.FirstName = first;
             this.LastName = last;
         }
+
+        //add defualt store 
+         public void addDefaultStore(int StoreId){
+           DefaultStore = StoreId;
+         }
         //list of orders 
         private List<Order> Orders { get; set; } = new List<Order>();
 

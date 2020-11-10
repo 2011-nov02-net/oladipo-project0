@@ -14,29 +14,27 @@ namespace StoreApp.Library
     {
 
         //product id
-
         public string ProductID { get; }
-
-
         //name
         private string _name;
-
+        //price
+        private double _price;
+        //quantity in stock
+        private int _quantity;
         public string Name
         {
             get { return _name; }
             //Name can not be an empty string. If name is epmty, throw an exception
             set
             {
-                if (value.Length == 0)
+             if (string.IsNullOrWhiteSpace(value))
                 {
-                    throw new ArgumentException("Name must not be empty.");
+                    throw new ArgumentException(message: "invalid Lastname", paramName: nameof(value));
                 }
                 _name = value;
             }
 
         }
-        //price
-        private double _price;
 
         public double Price
         {
@@ -52,8 +50,6 @@ namespace StoreApp.Library
             }
         }
 
-        //quantity in stock
-        private int _quantity;
         public int Quantity
         {
             get { return _quantity; }

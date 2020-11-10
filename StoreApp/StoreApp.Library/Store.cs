@@ -11,7 +11,7 @@ namespace StoreApp.Library
         private string _city;
         //location id
         public string StoreID { get; }
-        private Dictionary<string, int> Inventory;
+        public Dictionary<string, int> Inventory;
 
         public string City { get; }
         //constructor
@@ -46,16 +46,21 @@ namespace StoreApp.Library
             Inventory[name] -= quantity;
         }
 
-        public  void deleteItemsFromInventory(string name)
+        public void deleteItemsFromInventory(string name)
         {
             Inventory.Remove(name);
         }
 
-        // public string getInventory(){
-        //     var inventory = new System.Text.StringBuilder();
+        public string getInventory()
+        {
+            var inventory = new System.Text.StringBuilder();
 
-
-        // }
+            foreach (KeyValuePair<string, int> product in Inventory)
+            {
+              inventory.AppendLine($"{product.Key}\t{product.Value}");
+            }
+            return inventory.ToString();
+        }
 
     }
 }
