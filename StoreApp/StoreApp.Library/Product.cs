@@ -16,7 +16,7 @@ namespace StoreApp.Library
        //product id
         private int _id = 0;
        //increment the id with each new product added
-        public int ID{ get; set;} = ++_id;
+        //public int ID{ get; set;} = ++_id;
 
 
        //name
@@ -69,9 +69,5 @@ namespace StoreApp.Library
                 Price = price;
                 Name = name;
        }
-
-    //    public void AddInventory ( int count){
-    //        Quantity += count;
-    //    }
     }
 }

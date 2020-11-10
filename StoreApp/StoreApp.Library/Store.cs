@@ -15,7 +15,7 @@ namespace StoreApp.Library
 
 
         //Id increments by 1 each time a constructor is called.
-        public int ID { get; set; } = ++_id; 
+       // public int ID { get; set; } = _id++; 
 
         public string Name{
             get => _locationName= Name;
@@ -23,13 +23,13 @@ namespace StoreApp.Library
                 if ( value.Length == 0){
                    throw new ArgumentException("Name field must not be empty.");
               }
-              _firstName = value;
+              _locationName = value;
               }
 
         }
 
         //list of inventory in each store
-        public List<Product> Products { get; set} = new List<Product>();
+        public List<Product> Products { get; set;} = new List<Product>();
 
         
     }

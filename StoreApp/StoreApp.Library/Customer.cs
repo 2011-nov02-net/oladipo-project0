@@ -10,6 +10,8 @@ namespace StoreApp.Library
         private string _firstName;
         private string _lastName;
 
+        //default store id
+
 
        // set names to not allow empty string
         public string FirstName {
