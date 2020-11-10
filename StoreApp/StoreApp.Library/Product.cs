@@ -14,7 +14,7 @@ namespace StoreApp.Library
     {
        
        //product id
-        private int _id;
+        private int _id = 0;
        //increment the id with each new product added
         public int ID{ get; set;} = ++_id;
 
@@ -55,7 +55,7 @@ namespace StoreApp.Library
               private set 
                {
                      if ( value < 0){
-                         throw new ArgumentException("Quantitiy can not be a negative");
+                         throw new ArgumentOutOfRangeException("value", "Quantitiy can not be a negative");
 
                     }
                     _quantity = value;
