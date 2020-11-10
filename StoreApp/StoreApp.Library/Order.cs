@@ -1,17 +1,26 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace StoreApp.Library
 {
     class Order
     {
-        //store location
-
-        //customer
+        //store location 
+        public string locationName{ get;}
+        
         //time ordered
+        private DateTime Date {get;}
         //can contain a list of products
+      
+        //list of products 
+        private List<Product> products = new List<Product>();
 
-        //rejects orders with unreasnable high product quantitites
 
 
-    }
+    //     //constructor
+    //     public Order ( string locationName )
+
+
+     }
 }
