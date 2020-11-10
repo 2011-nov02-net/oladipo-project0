@@ -46,7 +46,7 @@ namespace StoreApp.Library
 
         //constructor
 
-        private static int customerIdSeed = 0;
+        private static int customerIdSeed = 1;
         public Customer(string first, string last)
         {
             this.CustomerID = customerIdSeed.ToString();

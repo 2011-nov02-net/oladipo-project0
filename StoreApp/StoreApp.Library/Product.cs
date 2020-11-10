@@ -52,8 +52,7 @@ namespace StoreApp.Library
 
         public int Quantity
         {
-            get { return _quantity; }
-            //the quantity of the product cannot be negative
+            get => _quantity;
             private set
             {
                 if (value < 0)
@@ -66,7 +65,7 @@ namespace StoreApp.Library
         }
 
         //constructor 
-        private static int productIdSeed = 0;
+        private static int productIdSeed = 1;
         public Product( string name, double price, int quantity)
         {
             this.ProductID = productIdSeed.ToString();
@@ -77,7 +76,7 @@ namespace StoreApp.Library
         }
 
         public void addQuantity( int amount){
-            Quantity += amount;
+            Quantity = Quantity + amount;
         }
     }
 }
