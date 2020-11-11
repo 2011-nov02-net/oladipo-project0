@@ -22,27 +22,12 @@ namespace StoreApp.Tests
 
         }
 
-       // [Fact]
-
-        // public void getInventory()
-        // {
-        //     string name = "coffee";
-        //     int quantity = 20;
-        //     var atlanta = new Store("Atlanta");
-        //     atlanta.addInventory(name, quantity);
-
-        //     string result = atlanta.getInventory();
-        //     bool condition = result.Equals("1\tcoffee\t20");
-           
-        //    Assert.True(condition);
-
-        // }
 
            [Fact]
         public void fullNameTest()
         {
             //set up data
-            Customer customer = new Customer();
+            var customer = new Customer();
             customer.FirstName = "Omah";
             customer.LastName = "Lay";
             string expected = "Omah Lay";
@@ -52,6 +37,27 @@ namespace StoreApp.Tests
 
             
             Assert.True(expected.Equals(actual));
+
+        }
+
+         [Fact]
+        public void instanceTest()
+        {
+            //set up data
+           var customer1 = new Customer();
+            customer1.FirstName = "Omah";
+            customer1.LastName = "Lay";
+            Customer.InstanceCount += 1;
+           var customer2 = new Customer();
+           customer1.FirstName = "Burna";
+            customer1.LastName = "Boy";
+            Customer.InstanceCount += 1;
+
+
+           
+
+            //test action
+            Assert.True(Customer.InstanceCount == 2);
 
         }
 

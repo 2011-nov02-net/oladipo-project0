@@ -8,6 +8,7 @@ namespace StoreApp.Library
     public class Customer
     {
 
+     public static int InstanceCount{get; set;}
         //name
         private string _firstName;
         private string _lastName;
