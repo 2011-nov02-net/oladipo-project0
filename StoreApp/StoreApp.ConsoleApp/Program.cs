@@ -7,7 +7,7 @@ namespace StoreApp.ConsoleApp
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
-            // GetProducts();
+          
         }
     }
 

@@ -15,7 +15,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\StoreApp.Library\StoreApp.Library.csproj" />
-    <ProjectReference Include="..\StoreApp.ConsoleApp\StoreApp.ConsoleApp.csproj" />
   </ItemGroup>
 
 </Project>

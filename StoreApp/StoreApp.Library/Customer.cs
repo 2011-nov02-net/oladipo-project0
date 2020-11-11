@@ -43,10 +43,19 @@ namespace StoreApp.Library
                 _lastName = value;
             }
         }
+         public string FullName
+        {
+            get
+            {
+                return FirstName + " " + LastName;
+            }
+        }
 
         //constructor
 
         private static int customerIdSeed = 1;
+
+        public Customer(){}
         public Customer(string first, string last)
         {
             this.CustomerID = customerIdSeed.ToString();

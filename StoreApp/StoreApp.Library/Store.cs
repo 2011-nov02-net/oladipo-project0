@@ -1,19 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
-
 namespace StoreApp.Library
 {
     public class Store
     {
         //location city
-        private string _city;
+        private string City { get; }
         //location id
-        public string StoreID { get; }
+        private string StoreID { get; }
         public Dictionary<string, int> Inventory;
 
-        public string City { get; }
         //constructor
 
         private static int storeIdSeed = 1;
@@ -54,13 +51,19 @@ namespace StoreApp.Library
         public string getInventory()
         {
             var inventory = new System.Text.StringBuilder();
+            int index = 1;
 
             foreach (KeyValuePair<string, int> product in Inventory)
             {
-              inventory.AppendLine($"{product.Key}\t{product.Value}");
+                string value = $"{index}\t{product.Key}\t{product.Value}";
+                inventory.AppendLine(value);
+                index++;
             }
+            
             return inventory.ToString();
         }
 
     }
+
+
 }

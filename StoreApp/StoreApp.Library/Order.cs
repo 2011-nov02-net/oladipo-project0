@@ -6,8 +6,10 @@ namespace StoreApp.Library
 {
     class Order
     {
+
+        private string OrderId { get;}
         //store location 
-        public Store LocationName{ get;}
+        public Store  LocationName{ get;}
         
         //time ordered
         private DateTime Date {get;}
@@ -18,13 +20,15 @@ namespace StoreApp.Library
         //list of products 
         private Dictionary<Product, int> Products;
 
-
+       private static int orderId = 1;
 
         //constructor
-        public Order ( Store name, Customer  cName, DateTime date, Dictionary<Product, int> products){
-            LocationName = name;
-            Customer = cName;
-            Date = date;
+        public Order ( Store name, Customer  cName, DateTime date){
+           this.OrderId = orderId.ToString();
+             orderId++; 
+            this.LocationName = name;
+            this.Customer = cName;
+            this.Date = date;
             Products = new Dictionary<Product, int>(); 
         }
 
