@@ -11,7 +11,7 @@ namespace StoreApp.Tests
         {
             string name = "coffee";
             int quantity = 20;
-            var atlanta = new Store("Atlanta");
+            var atlanta = new Location("Atlanta");
 
             //add inventory
             atlanta.addInventory(name, quantity);
@@ -19,6 +19,23 @@ namespace StoreApp.Tests
             bool condition = atlanta.Inventory["coffee"] == 20;
 
             Assert.True(condition);
+
+        }
+          [Fact]
+        public void getInventory()
+        {
+            string name = "coffee";
+            int quantity = 20;
+            var atlanta = new Location("Atlanta");
+
+            //add inventory
+            atlanta.addInventory(name, quantity);
+
+            string actual = atlanta.getInventory()[0];
+
+            string expected = "1\tcoffee\t20";
+
+            Assert.True(actual.Equals(expected));
 
         }
 
@@ -60,7 +77,21 @@ namespace StoreApp.Tests
             Assert.True(Customer.InstanceCount == 2);
 
         }
+       
+          [Fact]
+        public void addLocations()
+        {
+           string name = "kennesaw";
+         var kennesaw = new Store(name);
 
+        //     //add inventory
+        //     atlanta.addInventory(name, quantity);
+
+        //     bool condition = atlanta.Inventory["coffee"] == 20;
+
+        //     Assert.True(condition);
+
+         }
 
     }
 }

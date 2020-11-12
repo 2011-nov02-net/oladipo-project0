@@ -8,7 +8,7 @@ namespace StoreApp.Library
     public class Customer
     {
 
-     public static int InstanceCount{get; set;}
+       public static int InstanceCount{get; set;}
         //name
         private string _firstName;
         private string _lastName;
@@ -56,7 +56,14 @@ namespace StoreApp.Library
 
         private static int customerIdSeed = 1;
 
-        public Customer(){}
+        public Customer(){
+            this.CustomerID = customerIdSeed.ToString();
+            customerIdSeed++;
+        }
+
+        public Customer(int customerId){
+            this.CustomerID = customerId.ToString();
+        }
         public Customer(string first, string last)
         {
             this.CustomerID = customerIdSeed.ToString();
@@ -69,8 +76,16 @@ namespace StoreApp.Library
          public void addDefaultStore(int StoreId){
            DefaultStore = StoreId;
          }
-        //list of orders 
-        private List<Order> Orders { get; set; } = new List<Order>();
+       // get customers
+        public Customer GetCustomer(string first, string last){
+             Customer customer = new Customer(first, last);
+            return customer;
+        }
+        public Customer GetCustomer(int customerId){
+            Customer order = new Customer(customerId);
+            return order;
+        }
+        public List<Customer> Customers => new List<Customer>();
 
     }
 }

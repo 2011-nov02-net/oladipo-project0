@@ -12,7 +12,7 @@ namespace StoreApp.Library
     {
 
         //product id
-        public string ProductID { get; }
+        public string ProductId { get; }
         //name
         private string _name;
         //price
@@ -25,7 +25,7 @@ namespace StoreApp.Library
             //Name can not be an empty string. If name is epmty, throw an exception
             set
             {
-             if (string.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value))
                 {
                     throw new ArgumentException(message: "invalid Lastname", paramName: nameof(value));
                 }
@@ -64,17 +64,34 @@ namespace StoreApp.Library
 
         //constructor 
         private static int productIdSeed = 1;
-        public Product( string name, double price, int quantity)
+
+        public Product()
         {
-            this.ProductID = productIdSeed.ToString();
+           this.ProductId = productIdSeed.ToString();
+        }
+
+        public Product(int productId)
+        {
+            this.ProductId = productId.ToString();
+        }
+        public Product(string name, double price, int quantity)
+        {
+            this.ProductId = productIdSeed.ToString();
             productIdSeed++;
             this.Quantity = quantity;
             this.Price = price;
             this.Name = name;
         }
 
-        public void addQuantity( int amount){
+        public void addQuantity(int amount)
+        {
             Quantity = Quantity + amount;
+        }
+
+        public Product GetProduct(int productId)
+        {
+            Product product = new Product(productId);
+            return product;
         }
     }
 }
