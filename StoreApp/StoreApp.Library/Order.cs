@@ -9,35 +9,54 @@ namespace StoreApp.Library
     public class Order
     {
 
-        private string OrderId { get;}
+        private static int _orderIdSeed = 1;
+
+        private string OrderId { get; set; }
         //store location 
-        //public Location  LocationName{ get;}
+        public string LocationName { get; }
         //time ordered
-        private DateTime Date {get;}
-        public int CustomerId {get; set;}
-      
-        //list of itemrs 
-       // public List<OrderItem> OrderItems;
+        private DateTime Date { get; }
+        private int CustomerId { get; }
 
-       private static int orderIdSeed = 1;
+        //list of items 
+        private List<Customer> Customers;
+        private int _productQuantity;
 
-        //constructors
-
-        public Order(){
-             this.OrderId = orderIdSeed.ToString();
-            orderIdSeed++; 
+        public int ProductQuantity
+        {
+            get { return _productQuantity; }
+            set
+            {
+                if (value > 50)
+                {
+                    throw new ArgumentOutOfRangeException("value", "Price can not be a negative");
+                }
+                _productQuantity = value;
+            }
         }
-        public Order(int orderId){
+
+        public void newOrder(string productId, int quantity, int customerId)
+        {
+            OrderId = _orderIdSeed.ToString();
+            _orderIdSeed++;
+            Customers = new List<Customer>();
+            Customer customer = new Customer(customerId);
+            Customers.Add(customer);
+
+        }
+
+        public Order()
+        {
+            this.OrderId = _orderIdSeed.ToString();
+            _orderIdSeed++;
+        }
+        public Order(int orderId)
+        {
             this.OrderId = orderId.ToString();
-    
-        }
-      
-        public Order GetOrder(int orderId){
-            Order order = new Order(orderId);
-            return order;
-        }
-      public List<Order> Orders => new List<Order>();
-     }
 
-    //  public Customer customers {get; set;}
+        }
+    }
+
+
 }
+

@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <!-- <ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\StoreApp.Library\StoreApp.Library.csproj" />
-  </ItemGroup> -->
+  </ItemGroup>
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>

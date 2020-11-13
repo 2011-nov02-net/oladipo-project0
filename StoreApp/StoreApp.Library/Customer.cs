@@ -8,14 +8,16 @@ namespace StoreApp.Library
     public class Customer
     {
 
-       public static int InstanceCount{get; set;}
         //name
         private string _firstName;
         private string _lastName;
         //customer id
-        public string CustomerID { get; }
+        public string CustomerID { get; set;}
         //default store 
         public int DefaultStore {get; set;}
+
+        //list of all orders
+        public List<Product> CustomerProducts {get; set;}
 
 
         // set names to not allow empty string
@@ -59,10 +61,12 @@ namespace StoreApp.Library
         public Customer(){
             this.CustomerID = customerIdSeed.ToString();
             customerIdSeed++;
+            CustomerProducts = new List<Product>();
         }
 
         public Customer(int customerId){
             this.CustomerID = customerId.ToString();
+            CustomerProducts = new List<Product>();
         }
         public Customer(string first, string last)
         {
@@ -70,22 +74,19 @@ namespace StoreApp.Library
             customerIdSeed++;
             this.FirstName = first;
             this.LastName = last;
+            CustomerProducts = new List<Product>();
         }
 
-        //add defualt store 
-         public void addDefaultStore(int StoreId){
-           DefaultStore = StoreId;
-         }
-       // get customers
-        public Customer GetCustomer(string first, string last){
-             Customer customer = new Customer(first, last);
-            return customer;
+         public Customer(string first, string last, Product product)
+        {
+            this.CustomerID = customerIdSeed.ToString();
+            customerIdSeed++;
+            this.FirstName = first;
+            this.LastName = last;
+            CustomerProducts = new List<Product>();
+            CustomerProducts.Add(product);
         }
-        public Customer GetCustomer(int customerId){
-            Customer order = new Customer(customerId);
-            return order;
-        }
-        public List<Customer> Customers => new List<Customer>();
+
 
     }
 }

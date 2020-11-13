@@ -57,41 +57,8 @@ namespace StoreApp.Tests
 
         }
 
-         [Fact]
-        public void instanceTest()
-        {
-            //set up data
-           var customer1 = new Customer();
-            customer1.FirstName = "Omah";
-            customer1.LastName = "Lay";
-            Customer.InstanceCount += 1;
-           var customer2 = new Customer();
-           customer1.FirstName = "Burna";
-            customer1.LastName = "Boy";
-            Customer.InstanceCount += 1;
-
-
-           
-
-            //test action
-            Assert.True(Customer.InstanceCount == 2);
-
-        }
        
-          [Fact]
-        public void addLocations()
-        {
-           string name = "kennesaw";
-         var kennesaw = new Store(name);
-
-        //     //add inventory
-        //     atlanta.addInventory(name, quantity);
-
-        //     bool condition = atlanta.Inventory["coffee"] == 20;
-
-        //     Assert.True(condition);
-
-         }
+    
 
     }
 }

@@ -28,10 +28,7 @@ namespace StoreApp.Library
        this.OrderItemId = orderItemId.ToString();
    }
     
-// get all orderItems
-    // public OrderItem getOrderItem(int ){
-
-    // }
+     
 
     }
 }
