@@ -4,14 +4,28 @@ using System.Globalization;
 using System.Linq;
 using StoreApp.Library;
 using System.Collections.Generic;
+using System.IO;
+using System.Text.Json;
+using StoreApp.DataModel;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 
 namespace StoreApp.ConsoleApp
 {
     class Program
     {
+         DbContextOptions<project0Context> s_dbContextOptions;
         static void Main(string[] args)
         {
+            using var logStream = new StreamWriter("db-log.txt");
+            var optionsBuilder = new DbContextOptionsBuilder<project0Context>();
+            optionsBuilder.UseSqlServer(GetConnectionString());
+           // optionsBuilder.LogTo(logStream.WriteLine, LogLevel.Information);
+           optionsBuilder.LogTo(Console.WriteLine, LogLevel.Error);
+            s_dbContextOptions = optionsBuilder.Options;
+
+
             Store discount = new Store();
             discount.Name = "Discount BuestBuy";
             Store home = new Store();
@@ -38,7 +52,7 @@ namespace StoreApp.ConsoleApp
             } while (input != "r" && input != "q");
 
             if (input == "r")
-            
+
             {
                 int locationIndex = 1;
                 var locations = discount.getLocations();
@@ -49,6 +63,23 @@ namespace StoreApp.ConsoleApp
                 }
             };
 
+        }
+
+        static string GetConnectionString()
+        {
+            string path = "../../../project0.connection-string.json";
+            string json;
+            try
+            {
+                json = File.ReadAllText(path);
+            }
+            catch (IOException)
+            {
+                Console.WriteLine($"required file {path} not found. should just be the connection string in quotes.");
+                throw;
+            }
+            string connectionString = JsonSerializer.Deserialize<string>(json);
+            return connectionString;
         }
     }
 
