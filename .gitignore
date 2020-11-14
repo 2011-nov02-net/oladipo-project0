@@ -355,3 +355,5 @@ StoreApp/StoreApp.ConsoleApp/bin
 StoreApp/StoreApp.ConsoleApp/obj
 StoreApp/StoreApp.Library/bin
 StoreApp/StoreApp.Library/obj
+DS_Store
+StoreApp/.DS_Store
