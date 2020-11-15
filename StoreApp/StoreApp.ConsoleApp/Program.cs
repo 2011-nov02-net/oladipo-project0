@@ -15,14 +15,14 @@ namespace StoreApp.ConsoleApp
 {
     class Program
     {
-         DbContextOptions<project0Context> s_dbContextOptions;
+        static DbContextOptions<project0Context> s_dbContextOptions;
         static void Main(string[] args)
         {
             using var logStream = new StreamWriter("db-log.txt");
             var optionsBuilder = new DbContextOptionsBuilder<project0Context>();
             optionsBuilder.UseSqlServer(GetConnectionString());
-           // optionsBuilder.LogTo(logStream.WriteLine, LogLevel.Information);
-           optionsBuilder.LogTo(Console.WriteLine, LogLevel.Error);
+            optionsBuilder.LogTo(logStream.WriteLine, LogLevel.Information);
+            optionsBuilder.LogTo(Console.WriteLine, LogLevel.Error);
             s_dbContextOptions = optionsBuilder.Options;
 
 
