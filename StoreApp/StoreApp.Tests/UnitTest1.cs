@@ -16,7 +16,7 @@ namespace StoreApp.Tests
             //add inventory
             atlanta.addInventory(name, quantity);
 
-            bool condition = atlanta.Inventory["coffee"] == 20;
+            bool condition = atlanta.Inventories["coffee"] == 20;
 
             Assert.True(condition);
 

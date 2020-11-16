@@ -18,5 +18,24 @@ namespace StoreApp.DataModel
         public string Email { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
+
+        public Customer(int id, string first, string last, string email)
+        {
+
+            CustomerId = id;
+            FirstName = first;
+            LastName = last;
+            Email = email;
+
+        }
+
+        public Customer( string first, string last, string email)
+        {
+
+            FirstName = first;
+            LastName = last;
+            Email = email;
+
+        }
     }
 }

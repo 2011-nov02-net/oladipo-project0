@@ -12,11 +12,12 @@ namespace StoreApp.Library
     {
 
         //product id
-        public string ProductId { get; }
+        public int ProductId { get; set; }
         //name
         private string _name;
         //price
-        private double _price;
+        private decimal _price;
+
         //quantity in stock
         private int _quantity;
         public string Name
@@ -34,7 +35,7 @@ namespace StoreApp.Library
 
         }
 
-        public double Price
+        public decimal Price
         {
             get { return _price; }
             //the price of the product cannot be 0 or a negative number 
@@ -63,24 +64,17 @@ namespace StoreApp.Library
         }
 
         //constructor 
-        private static int productIdSeed = 1;
 
-        public Product()
-        {
-           this.ProductId = productIdSeed.ToString();
-        }
+        public Product(){ }
 
-        public Product(int productId)
+        public Product(string name, decimal price)
         {
-            this.ProductId = productId.ToString();
+            Name = name;
+            Price = price;
         }
-        public Product(string name, double price, int quantity)
+        public Product(string name)
         {
-            this.ProductId = productIdSeed.ToString();
-            productIdSeed++;
-            this.Quantity = quantity;
-            this.Price = price;
-            this.Name = name;
+            Name = name;
         }
 
         public void addQuantity(int amount)
@@ -88,10 +82,5 @@ namespace StoreApp.Library
             Quantity = Quantity + amount;
         }
 
-        public Product GetProduct(int productId)
-        {
-            Product product = new Product(productId);
-            return product;
-        }
     }
 }

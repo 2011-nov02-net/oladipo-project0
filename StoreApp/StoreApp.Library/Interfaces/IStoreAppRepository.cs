@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Text;
+using StoreApp.Library.Interfaces;
 using StoreApp.Library;
+
 
 namespace StoreApp.Library.Interfaces
 {
@@ -29,33 +32,23 @@ namespace StoreApp.Library.Interfaces
         Order GetOrderById(int OrderId);
 
         void AddLocation(Location location);
-        void UpdateLocation(Location location);
-        void DeleteLocation(int LocationId);
+        void UpdateLocation(int LocationId, int ProductId, int orderQuantity);
+       
 
         void AddCustomer(Customer customer);
-        void UpdateCustomer(Customer customer);
-        void DeleteCustomer(int CustomerId);
+       // void UpdateCustomer(Customer customer);
+       
 
         void AddProdcut(Product product);
-        void UpdateProduct(Product product);
-        void DeleteProduct(int ProductId);
+       // void UpdateProduct(Product product);
+       
 
         void AddOrder( Order order);
         void UpdateOrder( Order order);
-        void DeleteOrder( int OrderId);
 
+       
 
        void Save();
-
-
-
-
-
-
-
-
-
-
 
 
     }

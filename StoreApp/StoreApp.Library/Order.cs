@@ -9,52 +9,42 @@ namespace StoreApp.Library
     public class Order
     {
 
-        private static int _orderIdSeed = 1;
-
-        private string OrderId { get; set; }
+        public int OrderId { get; set; }
         //store location 
-        public string LocationName { get; }
+        public int LocationId { get; set; }
         //time ordered
-        private DateTime Date { get; }
-        private int CustomerId { get; }
+        public DateTime Date { get; set; }
+        public int CustomerId { get; set; }
 
-        //list of items 
-        private List<Customer> Customers;
-        private int _productQuantity;
+        public int ProductId { get; set; }
 
-        public int ProductQuantity
-        {
-            get { return _productQuantity; }
-            set
-            {
-                if (value > 50)
-                {
-                    throw new ArgumentOutOfRangeException("value", "Price can not be a negative");
-                }
-                _productQuantity = value;
-            }
+        public int OrderQuantity { get; set; }
+
+
+        public Order ( ){
+            
         }
 
-        public void newOrder(string productId, int quantity, int customerId)
-        {
-            OrderId = _orderIdSeed.ToString();
-            _orderIdSeed++;
-            Customers = new List<Customer>();
-            Customer customer = new Customer(customerId);
-            Customers.Add(customer);
+        // public void newOrder(string productId, int quantity, int customerId)
+        // {
+        //     OrderId = _orderIdSeed.ToString();
+        //     _orderIdSeed++;
+        //     Customers = new List<Customer>();
+        //     Customer customer = new Customer(customerId);
+        //     Customers.Add(customer);
 
-        }
+        // }
 
-        public Order()
-        {
-            this.OrderId = _orderIdSeed.ToString();
-            _orderIdSeed++;
-        }
-        public Order(int orderId)
-        {
-            this.OrderId = orderId.ToString();
+        // public Order()
+        // {
+        //     this.OrderId = _orderIdSeed.ToString();
+        //     _orderIdSeed++;
+        // }
+        // public Order(int orderId)
+        // {
+        //     this.OrderId = orderId.ToString();
 
-        }
+        // }
     }
 
 

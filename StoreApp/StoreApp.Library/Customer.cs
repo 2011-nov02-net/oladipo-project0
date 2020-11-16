@@ -11,13 +11,18 @@ namespace StoreApp.Library
         //name
         private string _firstName;
         private string _lastName;
+
+        private string _email;
+
+
+        public string Email { get; set; }
         //customer id
-        public string CustomerID { get; set;}
+        public int CustomerId { get; set; }
         //default store 
-        public int DefaultStore {get; set;}
+        public int DefaultStore { get; set; }
 
         //list of all orders
-        public List<Product> CustomerProducts {get; set;}
+        public List<Product> CustomerProducts { get; set; }
 
 
         // set names to not allow empty string
@@ -46,7 +51,7 @@ namespace StoreApp.Library
                 _lastName = value;
             }
         }
-         public string FullName
+        public string FullName
         {
             get
             {
@@ -56,35 +61,37 @@ namespace StoreApp.Library
 
         //constructor
 
-        private static int customerIdSeed = 1;
+        private static int CustomerIdSeed = 1;
 
-        public Customer(){
-            this.CustomerID = customerIdSeed.ToString();
-            customerIdSeed++;
+        public Customer()
+        {
+            this.CustomerId = CustomerIdSeed;
+            CustomerIdSeed++;
             CustomerProducts = new List<Product>();
         }
 
-        public Customer(int customerId){
-            this.CustomerID = customerId.ToString();
+        public Customer(int CustomerId)
+        {
+            this.CustomerId = CustomerId;
             CustomerProducts = new List<Product>();
         }
         public Customer(string first, string last)
         {
-            this.CustomerID = customerIdSeed.ToString();
-            customerIdSeed++;
+            this.CustomerId = CustomerIdSeed;
+            CustomerIdSeed++;
             this.FirstName = first;
             this.LastName = last;
             CustomerProducts = new List<Product>();
         }
 
-         public Customer(string first, string last, Product product)
+        public Customer(int id, string first, string last, string email)
         {
-            this.CustomerID = customerIdSeed.ToString();
-            customerIdSeed++;
-            this.FirstName = first;
-            this.LastName = last;
-            CustomerProducts = new List<Product>();
-            CustomerProducts.Add(product);
+            
+            CustomerId = id;
+            FirstName = first;
+            LastName = last;
+            Email = email;
+         
         }
 
 

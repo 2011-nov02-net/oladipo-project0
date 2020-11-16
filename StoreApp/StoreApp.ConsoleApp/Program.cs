@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using StoreApp.DataModel;
+//using StoreApp.DataModel.Respositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
@@ -15,54 +16,28 @@ namespace StoreApp.ConsoleApp
 {
     class Program
     {
-        static DbContextOptions<project0Context> s_dbContextOptions;
+        static DbContextOptions<project0Context> _dbContext;
+        
         static void Main(string[] args)
         {
-            using var logStream = new StreamWriter("db-log.txt");
+            using var logStream = new StreamWriter("ef-log.txt");
             var optionsBuilder = new DbContextOptionsBuilder<project0Context>();
             optionsBuilder.UseSqlServer(GetConnectionString());
             optionsBuilder.LogTo(logStream.WriteLine, LogLevel.Information);
             optionsBuilder.LogTo(Console.WriteLine, LogLevel.Error);
-            s_dbContextOptions = optionsBuilder.Options;
+            _dbContext = optionsBuilder.Options;
+            
 
-
-            Store discount = new Store();
-            discount.Name = "Discount BuestBuy";
-            Store home = new Store();
-            home.Name = "Discount BuestBuy";
-            //    Location atlanta = new Location("Atlanta");
-            //    Location kennesaw = new Location("kennesaw");
-            //    Location marietta = new Location("marietta");
-            //    Location mableton = new Location("mableton");
-            discount.addLocations("atlanta");
-            discount.addLocations("Kennesaw");
-            discount.addLocations("marietta");
-            home.addLocations("atlanta");
-            home.addLocations("Kennesaw");
-            home.addLocations("marietta");
-
-
-
-            Console.WriteLine($"Welcome to {discount.Name}!");
-            string input;
-            do
-            {
-                Console.WriteLine($"To see all of our locations,  Enter 'r' to read all of our locations or 'q' to exit");
-                input = Console.ReadLine().ToLower();
-            } while (input != "r" && input != "q");
-
-            if (input == "r")
-
-            {
-                int locationIndex = 1;
-                var locations = discount.getLocations();
-                foreach (string location in locations)
-                {
-                    Console.WriteLine($"{locationIndex} - {location}");
-                    locationIndex++;
-                }
+            var Aaron = new StoreApp.DataModel.Customer("Aaron", "Rodgers","aaronR@email.com");
+            var tom = new StoreApp.DataModel.Customer{
+                FirstName = "Tom",
+                LastName = "Brady'",
+                Email = "tBrady@email.com"
             };
 
+          //AddCustomer(Aaron);
+          AddCustomer(tom);
+            GetCustomers();
         }
 
         static string GetConnectionString()
@@ -81,6 +56,38 @@ namespace StoreApp.ConsoleApp
             string connectionString = JsonSerializer.Deserialize<string>(json);
             return connectionString;
         }
+
+        static void GetCustomers()
+        {
+            using var context = new project0Context(_dbContext);
+
+            var dbCustomers = context.Customers.ToList();
+
+            var appCustomer = dbCustomers.Select(c => new StoreApp.DataModel.Customer(c.CustomerId, c.FirstName, c.LastName, c.Email)).ToList();
+
+            foreach (var customer in appCustomer)
+            {
+                Console.WriteLine($"{customer.CustomerId}-{customer.FirstName}-{customer.LastName}-{customer.Email}");
+            };
+
+        }
+        static void AddCustomer(StoreApp.DataModel.Customer customer)
+        {
+            using var context = new project0Context(_dbContext);
+           
+            var dbCustomer = new StoreApp.DataModel.Customer(){
+
+              FirstName = customer.FirstName,
+               LastName = customer.LastName,
+                  Email = customer.Email
+            };
+    
+           context.SaveChanges();
+
+        }
+
+        
+
     }
 
 }

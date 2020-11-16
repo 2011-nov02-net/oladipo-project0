@@ -5,51 +5,57 @@ namespace StoreApp.Library
 {
     public class Location
     {
+
+        public int LocationId {get; set;}
+       public  string Name {get; set;}
+
+       public string Address {get; set;}
         //location city
-        public string City { get; }
-        //location id
-        private string LocationId { get; }
-        public Dictionary<string, int> Inventory;
+        public string City { get; set; }
+
+        public string State {get; set;}
+
+        public Dictionary<string, int> Inventories {get; set;}
 
         //constructor
 
         private static int LocationIdSeed = 1;
         
         public Location (){
-            this.LocationId = LocationIdSeed.ToString();
+            this.LocationId = LocationIdSeed;
             LocationIdSeed++;
         }
         public Location(string city)
         {
-            this.LocationId = LocationIdSeed.ToString();
+            this.LocationId = LocationIdSeed;
             LocationIdSeed++;
             this.City = city;
-            Inventory = new Dictionary<string, int>();
+            Inventories = new Dictionary<string, int>();
 
         }
 
         //add inventory
         public void addInventory(string name, int quantity)
         {
-            if (Inventory.ContainsKey(name))
+            if (Inventories.ContainsKey(name))
             {
-                Inventory[name] += quantity;
+                Inventories[name] += quantity;
             }
             else
             {
-                Inventory.Add(name, quantity);
+                Inventories.Add(name, quantity);
             }
 
         }
         //remove inventory
         public void reduceInventory(string name, int quantity)
         {
-            Inventory[name] -= quantity;
+            Inventories[name] -= quantity;
         }
 
         public void deleteItemsFromInventory(string name)
         {
-            Inventory.Remove(name);
+            Inventories.Remove(name);
         }
 
         public List<string> getInventory()
@@ -57,7 +63,7 @@ namespace StoreApp.Library
             var inventory = new List<string>();
             int index = 1;
 
-            foreach (KeyValuePair<string, int> product in Inventory)
+            foreach (KeyValuePair<string, int> product in Inventories)
             {
                 string value = $"{index.ToString()}\t{product.Key}\t{product.Value.ToString()}";
                 inventory.Add(value);
