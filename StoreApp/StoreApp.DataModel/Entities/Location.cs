@@ -21,5 +21,15 @@ namespace StoreApp.DataModel
 
         public virtual ICollection<Inventory> Inventories { get; set; }
         public virtual ICollection<Order> Orders { get; set; }
+
+        public Location(int id, string name, string address, string city, string state)
+        {
+            LocationId = id;
+            Name = name;
+            Address = address;
+            City = city;
+            State = state;
+
+        }
     }
 }

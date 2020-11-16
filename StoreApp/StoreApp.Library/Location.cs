@@ -21,9 +21,16 @@ namespace StoreApp.Library
 
         private static int LocationIdSeed = 1;
         
-        public Location (){
-            this.LocationId = LocationIdSeed;
-            LocationIdSeed++;
+        public Location (){  }
+
+          public Location(int id, string name, string address, string city, string state)
+        {
+            LocationId = id;
+           Name = name;
+           Address = address;
+           City = city;
+           State = state;
+
         }
         public Location(string city)
         {

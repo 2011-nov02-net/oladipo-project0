@@ -12,9 +12,6 @@ namespace StoreApp.Library
         private string _firstName;
         private string _lastName;
 
-        private string _email;
-
-
         public string Email { get; set; }
         //customer id
         public int CustomerId { get; set; }
@@ -75,13 +72,11 @@ namespace StoreApp.Library
             this.CustomerId = CustomerId;
             CustomerProducts = new List<Product>();
         }
-        public Customer(string first, string last)
+        public Customer(string first, string last, string email)
         {
-            this.CustomerId = CustomerIdSeed;
-            CustomerIdSeed++;
-            this.FirstName = first;
-            this.LastName = last;
-            CustomerProducts = new List<Product>();
+            FirstName = first;
+            LastName = last;
+            Email = email;
         }
 
         public Customer(int id, string first, string last, string email)

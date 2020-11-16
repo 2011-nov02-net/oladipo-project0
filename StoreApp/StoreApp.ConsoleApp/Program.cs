@@ -27,17 +27,10 @@ namespace StoreApp.ConsoleApp
             optionsBuilder.LogTo(Console.WriteLine, LogLevel.Error);
             _dbContext = optionsBuilder.Options;
             
-
-            var Aaron = new StoreApp.DataModel.Customer("Aaron", "Rodgers","aaronR@email.com");
-            var tom = new StoreApp.DataModel.Customer{
-                FirstName = "Tom",
-                LastName = "Brady'",
-                Email = "tBrady@email.com"
-            };
-
-          //AddCustomer(Aaron);
-          AddCustomer(tom);
-            GetCustomers();
+            
+            GetCustomerByName("Aaron", "Rodgers");
+           
+             // GetLocations();
         }
 
         static string GetConnectionString()
@@ -63,19 +56,29 @@ namespace StoreApp.ConsoleApp
 
             var dbCustomers = context.Customers.ToList();
 
-            var appCustomer = dbCustomers.Select(c => new StoreApp.DataModel.Customer(c.CustomerId, c.FirstName, c.LastName, c.Email)).ToList();
+            var appCustomer = dbCustomers.Select(c => new StoreApp.Library.Customer(c.CustomerId, c.FirstName, c.LastName, c.Email)).ToList();
 
             foreach (var customer in appCustomer)
             {
-                Console.WriteLine($"{customer.CustomerId}-{customer.FirstName}-{customer.LastName}-{customer.Email}");
+                Console.WriteLine($"{customer.CustomerId}\t\t{customer.FirstName}\t{customer.LastName}\t{customer.Email}");
             };
 
         }
+
+        static void GetCustomerByName(string firstName, string lastName){
+            using var context = new project0Context(_dbContext);
+            var dbCustomers = context.Customers.First(c => c.FirstName == firstName && c.LastName == lastName);
+            
+            var customer = new StoreApp.Library.Customer(dbCustomers.CustomerId,dbCustomers.FirstName, dbCustomers.LastName, dbCustomers.Email);
+            
+            Console.WriteLine($"{customer.CustomerId}\t{customer.FirstName}\t{customer.LastName}\t{customer.Email}");
+        }
+        //add a customer
         static void AddCustomer(StoreApp.DataModel.Customer customer)
         {
             using var context = new project0Context(_dbContext);
            
-            var dbCustomer = new StoreApp.DataModel.Customer(){
+            var dbCustomer = new StoreApp.Library.Customer(){
 
               FirstName = customer.FirstName,
                LastName = customer.LastName,
@@ -86,7 +89,33 @@ namespace StoreApp.ConsoleApp
 
         }
 
-        
+        static void GetLocations()
+        {
+
+            using var context = new project0Context(_dbContext);
+
+            var dbLocations = context.Locations.ToList();
+
+            var appLocations = dbLocations.Select(l => new StoreApp.Library.Location(l.LocationId, l.Name, l.Address, l.City, l.State)).ToList();
+
+                Console.WriteLine($"Store Id\t Store Name \t\t\tAddress \t\t City\t\t State");
+                Console.WriteLine();
+            foreach (var location in appLocations)
+            {
+                Console.WriteLine($"{location.LocationId}\t\t{location.Name}\t{location.Address}\t\t{location.City}\t{location.State}");
+            };
+
+        }
+
+        static void GetOrderDetailsById(int orderId ){
+              using var context = new project0Context(_dbContext);
+              var dbOrders = context.Orders
+              .Include( )
+              
+              
+              .First(c => c.FirstName == firstName && c.LastName == lastName);
+
+        }
 
     }
 
