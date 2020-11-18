@@ -6,30 +6,27 @@ namespace StoreApp.Library
     public class Location
     {
 
-        public int LocationId {get; set;}
-       public  string Name {get; set;}
+        public int LocationId { get; set; }
+        public string Name { get; set; }
 
-       public string Address {get; set;}
-        //location city
+        public string Address { get; set; }
         public string City { get; set; }
 
-        public string State {get; set;}
+        public string State { get; set; }
 
-        public Dictionary<string, int> Inventories {get; set;}
-
-        //constructor
+        public Dictionary<string, int> Inventories { get; set; }
 
         private static int LocationIdSeed = 1;
-        
-        public Location (){  }
 
-          public Location(int id, string name, string address, string city, string state)
+        public Location() { }
+
+        public Location(int id, string name, string address, string city, string state)
         {
             LocationId = id;
-           Name = name;
-           Address = address;
-           City = city;
-           State = state;
+            Name = name;
+            Address = address;
+            City = city;
+            State = state;
 
         }
         public Location(string city)
@@ -76,7 +73,7 @@ namespace StoreApp.Library
                 inventory.Add(value);
                 index++;
             }
-            
+
             return inventory;
         }
 

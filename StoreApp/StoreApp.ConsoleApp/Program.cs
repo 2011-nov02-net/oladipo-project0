@@ -1,9 +1,4 @@
 ﻿using System;
-using System.ComponentModel;
-using System.Globalization;
-using System.Linq;
-using StoreApp.Library;
-using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 using StoreApp.DataModel;
@@ -23,44 +18,30 @@ namespace StoreApp.ConsoleApp
             var optionsBuilder = new DbContextOptionsBuilder<project0Context>();
             optionsBuilder.UseSqlServer(GetConnectionString());
             optionsBuilder.LogTo(logStream.WriteLine, LogLevel.Information);
-            optionsBuilder.LogTo(Console.WriteLine, LogLevel.Error);
             _dbContext = optionsBuilder.Options;
-            
-         
+
+
             StoreAppRepository storeAppRepository = new StoreAppRepository(_dbContext);
 
             CustomerConsole customer = new CustomerConsole(_dbContext);
+            AdminConsole admin = new AdminConsole(_dbContext);
 
             Console.WriteLine("Welcome to Discount BestBuy");
             Console.WriteLine("Where we sell the same stuff, at the same prices!!!");
             Console.WriteLine();
-            customer.customerUI();
-          
-        //    storeAppRepository.GetLocationById(2);
+            Console.WriteLine("Enter 'A' for Admin or 'C' For Customer:");
+            string input = Console.ReadLine().ToLower();
+            while (input != "a" && input != "c")
+            {
+                Console.WriteLine("Enter 'A' for Admin or 'C' For Customer:");
+                input = Console.ReadLine().ToLower();
+            }
+            if (input == "a")
+            {
+                admin.AdminUI();
+            }
+            else customer.CustomerUI();
 
-        //     Console.WriteLine("Please enter your first and last names");
-        //     string firstName = Console.ReadLine(); 
-        //     while(string.IsNullOrEmpty(firstName)){
-        //          Console.WriteLine("First Name can't be empty. Input your First Name");
-        //          firstName = Console.ReadLine();  
-
-        //     }
-        //     string lastName = Console.ReadLine();
-        //     while(string.IsNullOrEmpty(lastName)){
-        //         Console.WriteLine("Last Name can't be empty. Input your First Name");
-        //          lastName = Console.ReadLine();  
-        //     }
-
-        //     Console.WriteLine(firstName +" "+lastName);
-
-          //  DataModel.Customer martin = new DataModel.Customer("Martin","Kyle","martink@outlook.com");
-            // AddCustomer(russ);
-            // GetCustomers();
-
-           // GetCustomerOrders(martin);
-          //  GetOrderById(1);
-          //  GetCustomerOrders(1);
-         // GetCustomers();
         }
 
 
@@ -81,7 +62,7 @@ namespace StoreApp.ConsoleApp
             return connectionString;
         }
 
-      
+
     }
 
 }

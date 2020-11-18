@@ -21,30 +21,11 @@ namespace StoreApp.Library
         public int OrderQuantity { get; set; }
 
 
-        public Order ( ){
-            
+        public Order()
+        {
+
         }
 
-        // public void newOrder(string productId, int quantity, int customerId)
-        // {
-        //     OrderId = _orderIdSeed.ToString();
-        //     _orderIdSeed++;
-        //     Customers = new List<Customer>();
-        //     Customer customer = new Customer(customerId);
-        //     Customers.Add(customer);
-
-        // }
-
-        // public Order()
-        // {
-        //     this.OrderId = _orderIdSeed.ToString();
-        //     _orderIdSeed++;
-        // }
-        // public Order(int orderId)
-        // {
-        //     this.OrderId = orderId.ToString();
-
-        // }
     }
 
 
