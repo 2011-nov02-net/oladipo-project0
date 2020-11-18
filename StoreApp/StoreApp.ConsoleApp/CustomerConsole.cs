@@ -122,7 +122,7 @@ namespace StoreApp.ConsoleApp
                 {
 
                     GetCustomerOrder();
-                    Console.WriteLine($"And your Total Price was {total}");
+                    Console.WriteLine($"Order Total:   ${total}");
                     Console.WriteLine($"Good Bye");
                     keepOrdering = false;
                 }
@@ -208,10 +208,10 @@ namespace StoreApp.ConsoleApp
         public void GetInventory(int locationid)
         {
             List<DataModel.Inventory> inventories = storeRepo.GetInventoryByLocationId(locationId);
-            Console.WriteLine($"Product Id\t Product Name \t\t Price \t\t Quantity In Stock");
+            Console.WriteLine($"Product Id\t Product Name \t\t Price");
             foreach (var inventory in inventories)
             {
-                Console.WriteLine($"{inventory.ProductId}\t\t{inventory.Product.Name}\t\t{inventory.Product.Price}\t\t\t{inventory.Quantity}");
+                Console.WriteLine($"{inventory.ProductId}\t\t{inventory.Product.Name}\t\t{inventory.Product.Price}");
             }
         }
         public void GetUserOrder()
@@ -234,7 +234,7 @@ namespace StoreApp.ConsoleApp
             var customerOrders = storeRepo.GetCustomerOrders(customerId);
             Console.WriteLine("Here are all your orders: ");
             Console.WriteLine();
-            Console.WriteLine($"Order Number\t\t\tProduct Name \t\t\tQuantity\t\t\t Location");
+            Console.WriteLine($"Order Number\t\tProduct Name \t\tQuantity\t\t Location");
             foreach (var order in customerOrders)
             {
                 Console.WriteLine($"{order.OrderId}\t\t{order.Product.Name}\t{order.OrderQuantity}\t{order.Location.Name}");

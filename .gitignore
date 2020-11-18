@@ -358,4 +358,4 @@ StoreApp/StoreApp.Library/obj
 DS_Store
 .DS_Store
 StoreApp/.DS_Store
-StoreApp/StoreApp.ConsoleApp/db-log.txt
+StoreApp/StoreApp.ConsoleApp/ef-log.txt

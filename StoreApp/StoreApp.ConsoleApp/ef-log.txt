@@ -1,42 +1,6 @@
-info: 11/18/2020 00:25:00.359 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+info: 11/18/2020 09:05:14.659 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
       Entity Framework Core 5.0.0 initialized 'project0Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-info: 11/18/2020 00:25:01.260 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (62ms) [Parameters=[@__firstName_0='?' (Size = 150), @__lastName_1='?' (Size = 150)], CommandType='Text', CommandTimeout='30']
-      SELECT TOP(1) [c].[CustomerId], [c].[Email], [c].[FirstName], [c].[LastName]
+info: 11/18/2020 09:05:15.594 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (59ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [c].[CustomerId], [c].[Email], [c].[FirstName], [c].[LastName]
       FROM [StoreApp].[Customer] AS [c]
-      WHERE ([c].[FirstName] = @__firstName_0) AND ([c].[LastName] = @__lastName_1)
-info: 11/18/2020 00:25:01.351 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
-      Entity Framework Core 5.0.0 initialized 'project0Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-info: 11/18/2020 00:25:01.381 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (27ms) [Parameters=[@__firstName_0='?' (Size = 150), @__lastName_1='?' (Size = 150)], CommandType='Text', CommandTimeout='30']
-      SELECT TOP(1) [c].[CustomerId], [c].[Email], [c].[FirstName], [c].[LastName]
-      FROM [StoreApp].[Customer] AS [c]
-      WHERE ([c].[FirstName] = @__firstName_0) AND ([c].[LastName] = @__lastName_1)
-info: 11/18/2020 00:25:07.048 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
-      Entity Framework Core 5.0.0 initialized 'project0Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-info: 11/18/2020 00:25:07.198 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (42ms) [Parameters=[@__locationId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-      SELECT [t].[LocationId], [t].[Address], [t].[City], [t].[Name], [t].[State], [t0].[LocationId], [t0].[ProductId], [t0].[Quantity], [t0].[ProductId0], [t0].[Name], [t0].[Price]
-      FROM (
-          SELECT TOP(1) [l].[LocationId], [l].[Address], [l].[City], [l].[Name], [l].[State]
-          FROM [StoreApp].[Location] AS [l]
-          WHERE [l].[LocationId] = @__locationId_0
-      ) AS [t]
-      LEFT JOIN (
-          SELECT [i].[LocationId], [i].[ProductId], [i].[Quantity], [p].[ProductId] AS [ProductId0], [p].[Name], [p].[Price]
-          FROM [StoreApp].[Inventory] AS [i]
-          INNER JOIN [StoreApp].[Product] AS [p] ON [i].[ProductId] = [p].[ProductId]
-      ) AS [t0] ON [t].[LocationId] = [t0].[LocationId]
-      ORDER BY [t].[LocationId], [t0].[LocationId], [t0].[ProductId], [t0].[ProductId0]
-info: 11/18/2020 00:25:07.259 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
-      Entity Framework Core 5.0.0 initialized 'project0Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-info: 11/18/2020 00:25:07.306 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (34ms) [Parameters=[@__locationId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
-      SELECT [i].[LocationId], [i].[ProductId], [i].[Quantity], [p].[ProductId], [p].[Name], [p].[Price], [l].[LocationId], [l].[Address], [l].[City], [l].[Name], [l].[State]
-      FROM [StoreApp].[Inventory] AS [i]
-      INNER JOIN [StoreApp].[Product] AS [p] ON [i].[ProductId] = [p].[ProductId]
-      INNER JOIN [StoreApp].[Location] AS [l] ON [i].[LocationId] = [l].[LocationId]
-      WHERE [i].[LocationId] = @__locationId_0
-info: 11/18/2020 00:25:15.750 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
-      Entity Framework Core 5.0.0 initialized 'project0Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-fail: 11/18/2020 00:25:15.916 RelationalEventId.CommandError[20102] (Microsoft.EntityFrameworkCore.Database.Command) 
