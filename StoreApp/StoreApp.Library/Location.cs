@@ -51,7 +51,7 @@ namespace StoreApp.Library
             }
 
         }
-        
+
         public void deleteItemsFromInventory(string name)
         {
             Inventories.Remove(name);
