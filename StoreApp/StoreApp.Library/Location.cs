@@ -51,11 +51,6 @@ namespace StoreApp.Library
             }
 
         }
-        //remove inventory
-        public void reduceInventory(string name, int quantity)
-        {
-            Inventories[name] -= quantity;
-        }
 
         public void deleteItemsFromInventory(string name)
         {

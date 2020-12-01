@@ -1,6 +1,16 @@
-info: 11/18/2020 09:05:14.659 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+info: 11/18/2020 10:27:50.573 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
       Entity Framework Core 5.0.0 initialized 'project0Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
-info: 11/18/2020 09:05:15.594 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
-      Executed DbCommand (59ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
-      SELECT [c].[CustomerId], [c].[Email], [c].[FirstName], [c].[LastName]
-      FROM [StoreApp].[Customer] AS [c]
+info: 11/18/2020 10:27:51.455 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (56ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+      SELECT [l].[LocationId], [l].[Address], [l].[City], [l].[Name], [l].[State]
+      FROM [StoreApp].[Location] AS [l]
+info: 11/18/2020 10:28:09.532 CoreEventId.ContextInitialized[10403] (Microsoft.EntityFrameworkCore.Infrastructure) 
+      Entity Framework Core 5.0.0 initialized 'project0Context' using provider 'Microsoft.EntityFrameworkCore.SqlServer' with options: None
+info: 11/18/2020 10:28:09.818 RelationalEventId.CommandExecuted[20101] (Microsoft.EntityFrameworkCore.Database.Command) 
+      Executed DbCommand (102ms) [Parameters=[@__locationId_0='?' (DbType = Int32)], CommandType='Text', CommandTimeout='30']
+      SELECT [o].[LocationId], [o].[CustomerId], [o].[ProductId], [o].[Date], [o].[OrderId], [o].[OrderQuantity], [c].[CustomerId], [c].[Email], [c].[FirstName], [c].[LastName], [p].[ProductId], [p].[Name], [p].[Price], [l].[LocationId], [l].[Address], [l].[City], [l].[Name], [l].[State]
+      FROM [StoreApp].[Orders] AS [o]
+      INNER JOIN [StoreApp].[Customer] AS [c] ON [o].[CustomerId] = [c].[CustomerId]
+      INNER JOIN [StoreApp].[Product] AS [p] ON [o].[ProductId] = [p].[ProductId]
+      INNER JOIN [StoreApp].[Location] AS [l] ON [o].[LocationId] = [l].[LocationId]
+      WHERE [o].[LocationId] = @__locationId_0
